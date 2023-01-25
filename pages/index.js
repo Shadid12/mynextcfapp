@@ -1,6 +1,5 @@
 import styles from '../styles/Home.module.css'
 import { getProducts } from '../db';
-import Link from 'next/link';
 
 export const config = {
   runtime: 'experimental-edge',
