@@ -2,7 +2,7 @@ import fauna from 'faunadb';
 
 const q = fauna.query;
 
-const client = new fauna.Client({ secret: 'fnAE7JV9P0ACT3La9djQtpvnOPa5MzHI_DafJtxl' });
+const client = new fauna.Client({ secret: process.env.FAUNA_SECRET });
 
 export const createProduct = async (title, price, description) => {
   const product = {
