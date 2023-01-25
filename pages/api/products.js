@@ -1,4 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
+import { createProduct } from '../../db';
 export const config = {
   runtime: 'experimental-edge',
 }
@@ -6,11 +7,19 @@ export const config = {
 export default async function (req) {
   if(req.method === 'POST') {
     const body = await readRequestBodyStream(req.body);
+    
     const { title, price, description } = JSON.parse(body);
-    // TODO: Save the product to the database
+    const product = await createProduct(title, price, description);
+
     return new Response(
       JSON.stringify({ 
-        message: 'Product created successfully'
+        message: 'Product created successfully',
+        product: {
+          id: product.ref.id,
+          title,
+          price,
+          description,
+        },
       }),
       {
         status: 200,
