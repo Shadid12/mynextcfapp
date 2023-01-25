@@ -8,22 +8,19 @@ export const config = {
 
 export async function getServerSideProps() {
   const fauna_secret = process.env.FAUNA_SECRET;
-  const node_env = process.env.NODE_VERSION;
   const products = await getProducts();
   return {
     props: {
       products,
       fauna_secret,
-      node_env
     },
   }
 }
 
 
-export default function Home({ products, fauna_secret, node_env }) {
+export default function Home({ products, fauna_secret }) {
   console.log(products);
   console.log('===>', fauna_secret);
-  console.log('===>', node_env);
   return (
     <div className={styles.container}>
       <h1>Products</h1>
