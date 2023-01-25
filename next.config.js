@@ -5,6 +5,10 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
+  webpack(config) {
+    config.plugins.push(new EnvironmentPlugin(['FAUNA_SECRET']));
+    return config;
+  },
 }
 
 module.exports = nextConfig
