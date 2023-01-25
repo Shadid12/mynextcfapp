@@ -8,7 +8,7 @@ export const config = {
 
 export async function getServerSideProps() {
   const fauna_secret = process.env.FAUNA_SECRET;
-  const node_env = process.env.NODE_ENV;
+  const node_env = process.env.NODE_VERSION;
   const products = await getProducts();
   return {
     props: {
